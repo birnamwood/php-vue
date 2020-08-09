@@ -1,11 +1,28 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+  require 'db.php';
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!$email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+      echo '入力された値が不正です。';
+      return false;
+    }
 
-    echo $email;
-    echo $password;
+    //パスワードの正規表現
+    if (preg_match('/^(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}$/i', $_POST['password'])) {
+      $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    } else {
+      echo 'パスワードは半角英数字をそれぞれ1文字以上含んだ8文字以上で設定してください。';
+      return false;
+    }
+    //登録処理
+    try {
+      $stmt = $pdo->prepare('insert into users(email, password) values(?, ?)');
+      $stmt->execute([$email, $password]);
+      echo '登録完了';
+    } catch (\Exception $e) {
+      echo '登録済みのメールアドレスです。';
+    }
 }
+
 ?>
 <head>
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
@@ -43,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <form method="post">
     <input type="text" name="email" placeholder="email">
     <input type="text" name="password" placeholder="password">
-    <v-btn small type="submit">登録</v-btn>
+    <v-btn small dark type="submit">登録</v-btn>
   </form>
 
   </v-content>

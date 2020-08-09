@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
 <body>
-<?php require 'db.php' ?>
 <div id="app">
 <v-app>
 <v-main>
@@ -36,7 +35,10 @@
     <v-card-text>
       <div class="body-1 mb-1">
         データベース接続先：
-        <?php var_dump($pdo->getAttribute(PDO::ATTR_SERVER_VERSION)); ?>
+        <?php
+          require 'db.php';
+          var_dump($pdo->getAttribute(PDO::ATTR_SERVER_VERSION)); 
+        ?>
       </div>
       <div class="body-2 mb-2">
         <a href="/userCreate.php">ユーザー登録</a>
