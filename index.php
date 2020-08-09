@@ -13,7 +13,7 @@
     <v-app-bar-nav-icon />
     <v-toolbar-title>TOPページ</v-toolbar-title>
     <v-spacer />
-    <v-btn icon>
+    <v-btn href="/" icon>
       <v-icon>mdi-home</v-icon>
     </v-btn>
     <v-btn icon>
@@ -27,19 +27,23 @@
     </v-btn>
   </v-app-bar>
   <v-content>
-
-  <v-card dark>
-    <v-card-title class="headline">データベース接続先</v-card-title>
-    <v-card-subtitle>heroku postgres</v-card-subtitle>
+  <br>
+  <v-card dark style="width:80%;">
+    <v-card-title class="headline">メニュー</v-card-title>
+    <v-card-subtitle>php vue heroku postgres</v-card-subtitle>
     <v-divider class="mx-3"></v-divider>
     <v-card-text>
       <div class="body-1 mb-1">
+        データベース接続先：
         <?php
           $url = parse_url(getenv('DATABASE_URL'));
           $dsn = sprintf('pgsql:host=%s;dbname=%s', $url['host'], substr($url['path'], 1));
           $pdo = new PDO($dsn, $url['user'], $url['pass']);
           var_dump($pdo->getAttribute(PDO::ATTR_SERVER_VERSION));
         ?>
+      </div>
+      <div class="body-2 mb-2">
+        <a href="/vue-top.php">Vueテスト</a>
       </div>
     </v-card-text>
     <v-card-actions>
@@ -49,7 +53,6 @@
     </v-card-actions>
   </v-card>
 
-  <a href="/vue-top.php">Vueテスト</a>
   </v-content>
 </v-main>
 </v-app>
