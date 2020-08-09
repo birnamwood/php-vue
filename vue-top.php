@@ -29,7 +29,7 @@
   <v-content>
   <br>
   <h2>ユーザー登録</h2>
-  <a href="/">
+  <a href="/">TOPページ</a>
 
   </v-content>
 </v-main>
