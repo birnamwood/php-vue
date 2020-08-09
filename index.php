@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
 <body>
+<?php require 'db.php' ?>
 <div id="app">
 <v-app>
 <v-main>
@@ -35,15 +36,10 @@
     <v-card-text>
       <div class="body-1 mb-1">
         データベース接続先：
-        <?php
-          $url = parse_url(getenv('DATABASE_URL'));
-          $dsn = sprintf('pgsql:host=%s;dbname=%s', $url['host'], substr($url['path'], 1));
-          $pdo = new PDO($dsn, $url['user'], $url['pass']);
-          var_dump($pdo->getAttribute(PDO::ATTR_SERVER_VERSION));
-        ?>
+        <?php var_dump($pdo->getAttribute(PDO::ATTR_SERVER_VERSION)); ?>
       </div>
       <div class="body-2 mb-2">
-        <a href="/vue-top.php">ユーザー登録</a>
+        <a href="/userCreate.php">ユーザー登録</a>
       </div>
     </v-card-text>
     <v-card-actions>
