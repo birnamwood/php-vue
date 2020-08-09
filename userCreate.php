@@ -1,3 +1,12 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    echo $email;
+    echo $password;
+}
+?>
 <head>
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.4.55/css/materialdesignicons.min.css" rel="stylesheet">
@@ -31,10 +40,11 @@
   <a href="/">TOPページ</a>
   <h2>ユーザー登録</h2>
 
-  <form metho="post">
+  <form method="post">
     <input type="text" name="email" placeholder="email">
     <input type="text" name="password" placeholder="password">
-</form>
+    <v-btn small type="submit">登録</v-btn>
+  </form>
 
   </v-content>
 </v-main>
@@ -51,10 +61,3 @@
     })
   </script>
 </body>
-
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-}
-?>
