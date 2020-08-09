@@ -9,7 +9,6 @@
 <v-app>
 <v-main>
 
-  <v-app dark>
   <v-app-bar dark>
     <v-app-bar-nav-icon />
     <v-toolbar-title>TOPページ</v-toolbar-title>
@@ -28,32 +27,30 @@
     </v-btn>
   </v-app-bar>
   <v-content>
-    <router-view />
-  </v-content>
-</v-app>
 
   <v-card dark>
-  <v-card-title class="headline">データベース接続先</v-card-title>
-  <v-card-subtitle>heroku postgres</v-card-subtitle>
-  <v-divider class="mx-3"></v-divider>
-  <v-card-text>
-    <div class="body-1 mb-1">
-      <?php
-        $url = parse_url(getenv('DATABASE_URL'));
-        $dsn = sprintf('pgsql:host=%s;dbname=%s', $url['host'], substr($url['path'], 1));
-        $pdo = new PDO($dsn, $url['user'], $url['pass']);
-        var_dump($pdo->getAttribute(PDO::ATTR_SERVER_VERSION));
-      ?>
-    </div>
-  </v-card-text>
-  <v-card-actions>
-    <v-spacer></v-spacer>
-    <v-btn small>OK</v-btn>
-    <v-btn x-small>Cancel</v-btn>
-  </v-card-actions>
-</v-card>
+    <v-card-title class="headline">データベース接続先</v-card-title>
+    <v-card-subtitle>heroku postgres</v-card-subtitle>
+    <v-divider class="mx-3"></v-divider>
+    <v-card-text>
+      <div class="body-1 mb-1">
+        <?php
+          $url = parse_url(getenv('DATABASE_URL'));
+          $dsn = sprintf('pgsql:host=%s;dbname=%s', $url['host'], substr($url['path'], 1));
+          $pdo = new PDO($dsn, $url['user'], $url['pass']);
+          var_dump($pdo->getAttribute(PDO::ATTR_SERVER_VERSION));
+        ?>
+      </div>
+    </v-card-text>
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn small>OK</v-btn>
+      <v-btn x-small>Cancel</v-btn>
+    </v-card-actions>
+  </v-card>
 
   <a href="/vue-top.php">Vueテスト</a>
+  </v-content>
 </v-main>
 </v-app>
 </div>
