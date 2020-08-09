@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.3.8/dist/vuetify.js"></script>
 <div id="app">
 <v-app>
+<v-main>
 
   <v-app dark>
   <v-app-bar dark>
@@ -55,6 +54,17 @@
 </v-card>
 
   <a href="/vue-top.php">Vueテスト</a>
+</v-main>
 </v-app>
 </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.3.8/dist/vuetify.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+    })
+  </script>
 </body>
