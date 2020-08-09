@@ -28,8 +28,13 @@
   </v-app-bar>
   <v-content>
   <br>
-  <h2>ユーザー登録</h2>
   <a href="/">TOPページ</a>
+  <h2>ユーザー登録</h2>
+
+  <form metho="post">
+    <input type="text" name="email" placeholder="email">
+    <input type="text" name="password" placeholder="password">
+</form>
 
   </v-content>
 </v-main>
@@ -46,3 +51,10 @@
     })
   </script>
 </body>
+
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+?>

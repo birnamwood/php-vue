@@ -28,7 +28,7 @@
   </v-app-bar>
   <v-content>
   <br>
-  <v-card dark style="width:80%;">
+  <v-card dark class="center80">
     <v-card-title class="headline">メニュー</v-card-title>
     <v-card-subtitle>php vue heroku postgres</v-card-subtitle>
     <v-divider class="mx-3"></v-divider>
@@ -43,7 +43,7 @@
         ?>
       </div>
       <div class="body-2 mb-2">
-        <a href="/vue-top.php">Vueテスト</a>
+        <a href="/vue-top.php">ユーザー登録</a>
       </div>
     </v-card-text>
     <v-card-actions>
@@ -68,3 +68,9 @@
     })
   </script>
 </body>
+
+<css>
+  .center80 {
+    width: 80%;
+    margin: auto;
+  }
